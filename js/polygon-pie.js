@@ -9,7 +9,7 @@ var pieOptions = {
 						sides: 6,
 						percentArray: [80, 60, 30, 80, 50, 20],
 
-						lineWidth: 1,
+						lineWidth: 10,
 						lineColor: '#fff',
 						segmentColors: ['#F2385A', '#F5A503', '#E9F1DF', '#56D9CD', '#3AA1BF', '#71F5EC']
 					};
@@ -111,8 +111,6 @@ function PolygonPie ( options ){
 
 var pie = new PolygonPie(pieOptions);
 
-console.log(pie.sides)
-
 function render () {
 	//console.log(pie.centerX);
 
@@ -121,6 +119,16 @@ function render () {
 	ctx.clearRect(0, 0, 500, 500);
 	pie.draw();
 	
+	$('#sSides').val(pieOptions.sides);
+	$('#sLine').val(pieOptions.lineWidth);
+
+	$(".sPercent").each(function( i ) {
+		$(this).val(pieOptions.percentArray[i]);
+	});
+
+	$(".sPercentColor").each(function( i ) {
+		$(this).val(pieOptions.segmentColors[i]);
+	});
 }
 
 window.requestAnimFrame = (function(){
@@ -137,29 +145,55 @@ window.requestAnimFrame = (function(){
 	render();
 })();
 
+animate();
+
+function animation1() {
+	var tween = new TWEEN.Tween( { width: 10, sides: 100 } )
+			.to( { width: 5, sides: 6 }, 1500 )
+			.easing( TWEEN.Easing.Cubic.Out )
+			.onUpdate( function () {
+			pieOptions.sides = this.sides;
+			pieOptions.lineWidth = this.width;
+		})
+	.start()
+}
+
+function animation2() {
+	var tween = new TWEEN.Tween( { width: 1, sides: 3 } )
+		.to( { width: 10, sides: 6 }, 5500 )
+		.easing( TWEEN.Easing.Elastic.Out )
+		.onUpdate( function () {
+			pieOptions.sides = this.sides;
+			pieOptions.lineWidth = this.width;
+		})
+		.start();
+}
 
 
+function animation3() {
+	var tween = new TWEEN.Tween( { width: 1, sides: 0 } )
+		.to( { width: 10, sides: 6 }, 5500 )
+		.easing( TWEEN.Easing.Elastic.Out )
+		.onUpdate( function () {
+			pieOptions.sides = this.sides;
+			pieOptions.lineWidth = this.width;
+		})
+		.start();
 
-init();
-			animate();
-
-			function init() {
-
-				var tween = new TWEEN.Tween( { x: 0, sides: 0 } )
-					.to( { x: 100, sides:6 }, 1500 )
-					.easing( TWEEN.Easing.Quintic.Out )
-					.onUpdate( function () {
-						for (var i=0; i<6; i++) {
-							//pieOptions.percentArray[i] = this.x;
-							pieOptions.sides = this.sides;
-						}
-					})
-					.start();
+	var tween2 = new TWEEN.Tween( { percent: 0 } )
+		.to( { percent: 100 }, 5500 )
+		.easing( TWEEN.Easing.Elastic.Out )
+		.onUpdate( function () {
+			for (var i=0; i<6; i++) {
+				pieOptions.percentArray[i] = this.percent;
 			}
+		})
+		.start();
+}
 
-			function animate() {
+function animate() {
 
-				requestAnimationFrame( animate );
-				TWEEN.update();
+	requestAnimationFrame( animate );
+	TWEEN.update();
 
-			}
+}

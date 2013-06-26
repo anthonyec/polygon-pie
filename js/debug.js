@@ -4,11 +4,12 @@ $(function(){
 	    pieOptions.lineWidth = this.value;
 	});
 
-	for (var i=0; i<5; i++) {
-		$('#sPercent'+i).change(function(){
-	    	pieOptions.percentArray[i] = this.value;
+	$('#sColor').val('#ffffff');
+	$("#sColor").each(function( i ) {
+		$(this).change(function(){
+	    	pieOptions.lineColor = this.value;
 		});
-	}
+	});
 
 	$(".sPercent").each(function( i ) {
 		$(this).change(function(){
@@ -16,8 +17,15 @@ $(function(){
 		});
 	});
 
-	$('#sSides').val(6);
+	$(".sPercentColor").each(function( i ) {
+		$(this).val(pieOptions.segmentColors[i]);
 
+		$(this).change(function(){
+	    	pieOptions.segmentColors[i] = this.value;
+		});
+	});
+
+	$('#sSides').val(6);
 	$('#sSides').change(function(){
 	    pieOptions.sides = this.value;
 	});
