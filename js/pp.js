@@ -1,6 +1,8 @@
 (function(){
 
-	function drawPolygonPie ( options ){
+	function PolygonPie ( options ){
+
+		console.log("created");
 
 		function trigFunctionX ( pointRatio ){
 			return Math.cos(pointRatio*2*Math.PI);
