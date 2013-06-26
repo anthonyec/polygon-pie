@@ -1,0 +1,1 @@
+var chart = new segmentChart( xpos, ypos, radius, segments, segmentPercentArray[10, 50, 100, 10, 1])
