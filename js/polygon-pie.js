@@ -14,6 +14,20 @@ var pieOptions = {
 						segmentColors: ['#F2385A', '#F5A503', '#E9F1DF', '#56D9CD', '#3AA1BF', '#71F5EC']
 					};
 
+var pieOptions = {
+	context: ctx,
+	x: canvas.width/2,
+	y: canvas.height/2,
+	radius: 150,
+	sides: 6,
+	percentArray: [80, 60, 30, 80, 50, 20],
+
+	lineWidth: 10,
+	lineColor: '#fff',
+	segmentColors: ['#63C5EC', '#36D787', '#F9D01E', '#FA8FB9', '#A3369F', '#E81333']
+};
+
+
 function PolygonPie ( options ){
 
 	function trigFunctionX ( pointRatio ){
@@ -111,6 +125,12 @@ function PolygonPie ( options ){
 
 var pie = new PolygonPie(pieOptions);
 
+function copy () {
+	var imgData = ctx.getImageData(0, 0, 100, 100);
+	ctx.putImageData(imgData, 0, 0);
+}
+
+
 function render () {
 	//console.log(pie.centerX);
 
@@ -129,6 +149,8 @@ function render () {
 	$(".sPercentColor").each(function( i ) {
 		$(this).val(pieOptions.segmentColors[i]);
 	});
+
+	copy();
 }
 
 window.requestAnimFrame = (function(){
@@ -149,8 +171,8 @@ animate();
 
 function animation1() {
 	var tween = new TWEEN.Tween( { width: 10, sides: 100 } )
-			.to( { width: 5, sides: 6 }, 1500 )
-			.easing( TWEEN.Easing.Cubic.Out )
+			.to( { width: 5, sides: 6 }, 1000 )
+			.easing( TWEEN.Easing.Exponential.InOut )
 			.onUpdate( function () {
 			pieOptions.sides = this.sides;
 			pieOptions.lineWidth = this.width;
@@ -159,7 +181,7 @@ function animation1() {
 }
 
 function animation2() {
-	var tween = new TWEEN.Tween( { width: 1, sides: 3 } )
+	var tween = new TWEEN.Tween( { width: 1, sides: 2 } )
 		.to( { width: 10, sides: 6 }, 5500 )
 		.easing( TWEEN.Easing.Elastic.Out )
 		.onUpdate( function () {
@@ -192,8 +214,10 @@ function animation3() {
 }
 
 function animate() {
-
 	requestAnimationFrame( animate );
 	TWEEN.update();
+}
 
+function createOptions () {
+	console.log("var pieOptions = { context: ctx, x: canvas.width/2, y: canvas.height/2, radius: 150, sides: "+pieOptions.sides+", percentArray: ["+pieOptions.percentArray[0]+", "+pieOptions.percentArray[1]+", "+pieOptions.percentArray[2]+", "+pieOptions.percentArray[3]+", "+pieOptions.percentArray[4]+", "+pieOptions.percentArray[5]+"], lineWidth: "+pieOptions.lineWidth+", lineColor: '"+pieOptions.lineColor+"', segmentColors: ['"+pieOptions.segmentColors[0]+"', '"+pieOptions.segmentColors[1]+"', '"+pieOptions.segmentColors[2]+"', '"+pieOptions.segmentColors[3]+"', '"+pieOptions.segmentColors[4]+"', '"+pieOptions.segmentColors[5]+"']};")
 }

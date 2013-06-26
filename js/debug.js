@@ -25,7 +25,7 @@ $(function(){
 		});
 	});
 
-	$('#sSides').val(6);
+	$('#sSides').val(pieOptions.sides);
 	$('#sSides').change(function(){
 	    pieOptions.sides = this.value;
 	});
