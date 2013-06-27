@@ -13,7 +13,7 @@ $(function(){
 
 	$(".sPercent").each(function( i ) {
 		$(this).change(function(){
-	    	pieOptions.percents[i] = this.value;
+	    	pieOptions.percentArray[i] = this.value;
 		});
 	});
 
