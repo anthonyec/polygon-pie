@@ -15,6 +15,14 @@ var pieOptions = {
 
 var pie = new PolygonPie(pieOptions);
 
+
+
+
+
+
+
+
+
 var animate = { x : 210, y: 210, sides: 100 };
 var target = { x : 210, y: 210, sides: 6 };
 var tween = new TWEEN.Tween(animate).to(target, 2000).easing(TWEEN.Easing.Quintic.Out).start();

@@ -65,7 +65,7 @@ var PolygonPie = function ( options ) {
 			context.fillStyle = this.segmentColors[i];
 			context.fill();
 		}
-
+		
 		if (this.lineWidth != 0 || this.lineWidth != false) {
 			/* Star line drawing */
 			for (var i=0; i<=this.sides; i++) {
