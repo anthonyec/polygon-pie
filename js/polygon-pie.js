@@ -35,7 +35,31 @@ var PolygonPie = function ( options ) {
 		this.lineWidth = optionObject.lineWidth;
 		this.lineColor = optionObject.lineColor; 
 		this.segmentColors = optionObject.segmentColors;   
+		this.backgroundColor = optionObject.backgroundColor;  
+
+		/* Outline + background drawing */
+		context.beginPath();
+		context.lineWidth = this.lineWidth;
+		context.lineCap = 'round';
+		context.moveTo(this.centerX + this.radius,  this.centerY);
 		
+		for (var i=0; i<=this.sides; i++) {
+			var pointRatio = i/this.sides;
+			var xSteps = trigFunctionX(pointRatio);
+			var ySteps = trigFunctionY(pointRatio);
+			var pointX = this.centerX + xSteps * this.radius;
+			var pointY = this.centerY + ySteps * this.radius;
+			context.lineTo(pointX, pointY);
+
+			if (this.lineWidth != 0 || this.lineWidth != false) {
+				context.strokeStyle = this.lineColor;
+				context.stroke();
+			}
+		}
+		
+		context.fillStyle = this.backgroundColor;
+		context.fill();
+		context.closePath();
 
 		/* Triangle drawing */
 		for (var i=0; i<=this.sides; i++) {
@@ -66,8 +90,8 @@ var PolygonPie = function ( options ) {
 			context.fill();
 		}
 		
+		/* Star line drawing */
 		if (this.lineWidth != 0 || this.lineWidth != false) {
-			/* Star line drawing */
 			for (var i=0; i<=this.sides; i++) {
 				var pointRatio = i/this.sides;
 				var xSteps = trigFunctionX(pointRatio);
@@ -81,25 +105,6 @@ var PolygonPie = function ( options ) {
 				context.closePath();
 			}
 
-			context.beginPath();
-			context.lineWidth = this.lineWidth;
-			context.lineCap = 'round';
-			context.moveTo(this.centerX + this.radius,  this.centerY);
-
-			/* Outline drawing */
-			for (var i=0; i<=this.sides; i++) {
-				var pointRatio = i/this.sides;
-				var xSteps = trigFunctionX(pointRatio);
-				var ySteps = trigFunctionY(pointRatio);
-				var pointX = this.centerX + xSteps * this.radius;
-				var pointY = this.centerY + ySteps * this.radius;
-				context.lineTo(pointX, pointY);
-				context.strokeStyle = this.lineColor;
-				context.stroke();
-				
-			}
-
-			context.closePath();
 		}
 	}
 }

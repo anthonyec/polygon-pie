@@ -1,0 +1,155 @@
+@import "import/reset"
+@import "import/base"
+
+@mixin stripe-gradient
+	background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 17%, rgba(255,255,255,0) 18%, rgba(255,255,255,0) 19%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 28%, rgba(255,255,255,0) 29%, rgba(255,255,255,0) 31%, rgba(255,255,255,1) 32%, rgba(255,255,255,1) 38%, rgba(255,255,255,0) 39%, rgba(255,255,255,0) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,1) 49%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 63%, rgba(255,255,255,1) 64%, rgba(255,255,255,1) 65%, rgba(255,255,255,0) 66%, rgba(255,255,255,0) 90%, rgba(255,255,255,1) 91%, rgba(255,255,255,0) 92%, rgba(255,255,255,0) 100%)
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(17%,rgba(255,255,255,1)), color-stop(18%,rgba(255,255,255,0)), color-stop(19%,rgba(255,255,255,0)), color-stop(20%,rgba(255,255,255,1)), color-stop(28%,rgba(255,255,255,1)), color-stop(29%,rgba(255,255,255,0)), color-stop(31%,rgba(255,255,255,0)), color-stop(32%,rgba(255,255,255,1)), color-stop(38%,rgba(255,255,255,1)), color-stop(39%,rgba(255,255,255,0)), color-stop(44%,rgba(255,255,255,0)), color-stop(45%,rgba(255,255,255,1)), color-stop(49%,rgba(255,255,255,1)), color-stop(50%,rgba(255,255,255,0)), color-stop(63%,rgba(255,255,255,0)), color-stop(64%,rgba(255,255,255,1)), color-stop(65%,rgba(255,255,255,1)), color-stop(66%,rgba(255,255,255,0)), color-stop(90%,rgba(255,255,255,0)), color-stop(91%,rgba(255,255,255,1)), color-stop(92%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0)))
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 17%,rgba(255,255,255,0) 18%,rgba(255,255,255,0) 19%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 28%,rgba(255,255,255,0) 29%,rgba(255,255,255,0) 31%,rgba(255,255,255,1) 32%,rgba(255,255,255,1) 38%,rgba(255,255,255,0) 39%,rgba(255,255,255,0) 44%,rgba(255,255,255,1) 45%,rgba(255,255,255,1) 49%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 63%,rgba(255,255,255,1) 64%,rgba(255,255,255,1) 65%,rgba(255,255,255,0) 66%,rgba(255,255,255,0) 90%,rgba(255,255,255,1) 91%,rgba(255,255,255,0) 92%,rgba(255,255,255,0) 100%)
+	background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 17%,rgba(255,255,255,0) 18%,rgba(255,255,255,0) 19%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 28%,rgba(255,255,255,0) 29%,rgba(255,255,255,0) 31%,rgba(255,255,255,1) 32%,rgba(255,255,255,1) 38%,rgba(255,255,255,0) 39%,rgba(255,255,255,0) 44%,rgba(255,255,255,1) 45%,rgba(255,255,255,1) 49%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 63%,rgba(255,255,255,1) 64%,rgba(255,255,255,1) 65%,rgba(255,255,255,0) 66%,rgba(255,255,255,0) 90%,rgba(255,255,255,1) 91%,rgba(255,255,255,0) 92%,rgba(255,255,255,0) 100%)
+	background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 17%,rgba(255,255,255,0) 18%,rgba(255,255,255,0) 19%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 28%,rgba(255,255,255,0) 29%,rgba(255,255,255,0) 31%,rgba(255,255,255,1) 32%,rgba(255,255,255,1) 38%,rgba(255,255,255,0) 39%,rgba(255,255,255,0) 44%,rgba(255,255,255,1) 45%,rgba(255,255,255,1) 49%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 63%,rgba(255,255,255,1) 64%,rgba(255,255,255,1) 65%,rgba(255,255,255,0) 66%,rgba(255,255,255,0) 90%,rgba(255,255,255,1) 91%,rgba(255,255,255,0) 92%,rgba(255,255,255,0) 100%)
+	background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 17%,rgba(255,255,255,0) 18%,rgba(255,255,255,0) 19%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 28%,rgba(255,255,255,0) 29%,rgba(255,255,255,0) 31%,rgba(255,255,255,1) 32%,rgba(255,255,255,1) 38%,rgba(255,255,255,0) 39%,rgba(255,255,255,0) 44%,rgba(255,255,255,1) 45%,rgba(255,255,255,1) 49%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 63%,rgba(255,255,255,1) 64%,rgba(255,255,255,1) 65%,rgba(255,255,255,0) 66%,rgba(255,255,255,0) 90%,rgba(255,255,255,1) 91%,rgba(255,255,255,0) 92%,rgba(255,255,255,0) 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 )
+
+
+.intro-animation
+	background: white
+	//background: url('../images/intro-background.jpg') no-repeat center
+	display: block
+	width: 100%
+	height: 300px
+	position: relative
+	//+animation(intro-scroll 10s linear infinite)
+	*
+		//outline: 1px solid red
+
+.main-pie
+	background: url('../images/pie-logo.png') no-repeat center
+	display: block
+	width: 150px
+	height: 150px
+	//+animation(intro-rotate 1.2s ease-in-out infinite)
+	+animation(intro-rotate 15s linear infinite)
+
+.main-pie-container
+	display: block
+	width: 150px
+	height: 150px
+	left: 50%
+	top: 50%
+	margin-left: -75px
+	margin-top: -75px
+	position: absolute
+	overflow: hidden
+		
+	//+animation(intro-image-rotate 7.2s linear infinite)
+	//+transform (rotate(-60deg))
+
+.main-pie-stripes
+	@extend .main-pie-container
+	+stripe-gradient
+	+animation(intro-stripes 1s ease-in-out infinite)
+	overflow: visible
+	z-index: 100
+
+	&:before
+		content: ""
+		background: white
+		display: block
+		width: 150px
+		height: 150px
+		margin-left: -150px
+
+.main-pie-shadow
+	background: black
+	display: block
+	position: absolute
+	width: 150px
+	height: 30px
+	left: 50%
+	top: 50%
+	margin-left: -75px
+	margin-top: 75px
+
+.main-pie-category
+	color: red
+	display: block
+	width: 120px
+	top: 50px
+	left: 50%
+	margin-left: -60px
+	text-transform: uppercase
+	text-align: center
+	position: absolute
+	z-index: 10
+	//+animation(intro-fade-in 1.2s ease-in-out infinite)
+
+
+// +keyframes(intro-rotate)
+// 	0% 
+// 		+transform (rotate(0deg))
+// 	20% 
+// 		+transform (rotate(10deg))
+// 	70% 
+// 		+transform (rotate(-65deg))
+// 	99.95% 
+// 		+transform (rotate(-60deg))
+// 	100% 
+// 		+transform (rotate(0deg))
+
++keyframes(intro-scroll)
+	0%
+		background-position: 0px 0px
+	100%
+		background-position: -1765px 0px
+
++keyframes(intro-stripes)
+	0%
+		+transform (translateX(150px))
+	100%
+		+transform (translateX(-150px))
+
++keyframes(intro-image-rotate)
+	0% 
+		+transform (rotate(0deg))
+
+	16.55% 
+		+transform (rotate(-0deg))
+	16.6% 
+		+transform (rotate(-60deg))
+
+	33.15% 
+		+transform (rotate(-60deg))
+	33.2% 
+		+transform (rotate(-120deg))
+
+	49.75% 
+		+transform (rotate(-120deg))	
+	49.8% 
+		+transform (rotate(-180deg))
+
+	66.35% 
+		+transform (rotate(-180deg))
+	66.4% 
+		+transform (rotate(-240deg))
+
+	83.55% 
+		+transform (rotate(-240deg))
+	83.6% 
+		+transform (rotate(-300deg))
+
+	99.55% 
+		+transform (rotate(-300deg))
+	99.6% 
+		+transform (rotate(0deg))
+
++keyframes(intro-fade-in)
+	50%
+		opacity: 0
+	100%
+		opacity: 100
+
++keyframes(intro-rotate)
+	0% 
+		+transform (rotate(0deg))
+	100% 
+		+transform (rotate(-360deg))

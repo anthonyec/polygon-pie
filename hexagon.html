@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+</head>
+<body>
+	
+	<canvas id="logo" class="logo-rotate" width="500" height="500">
+		<p>upgrade broswer right now</p>
+	</canvas>
+
+
+	<script>
+		var canvas = document.getElementById("logo");
+		var ctx = canvas.getContext("2d");
+		var segmentColors = ['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'];
+
+		var numberOfSides = 6,
+		    size = 150,
+		    Xcenter = 150,
+		    Ycenter = 150;
+
+		
+		//ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));          
+		var percent = 0.2
+		
+		for (var i=0; i<=numberOfSides; i+=1) {
+			ctx.beginPath();
+
+			ctx.moveTo (Xcenter, Ycenter);      
+		    ctx.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides) * percent, Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides) * percent);
+		    ctx.lineTo (Xcenter + size * Math.cos((i+1) * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin((i+1) * 2 * Math.PI / numberOfSides));
+		    ctx.lineTo (Xcenter, Ycenter);
+
+		    ctx.fillStyle = segmentColors[i-1];
+		    ctx.fill();
+		    ctx.strokeStyle = "#000000";
+			ctx.lineWidth = 1;
+			ctx.stroke();
+		    ctx.closePath();
+
+		    console.log(segmentColors[i-1])
+		}
+
+	</script>
+
+</body>
+</html>

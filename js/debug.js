@@ -11,6 +11,10 @@ $(function(){
 		});
 	});
 
+	$('#sBackground').change(function(){
+	    pieOptions.backgroundColor = this.value;
+	});
+
 	$(".sPercent").each(function( i ) {
 		$(this).change(function(){
 	    	pieOptions.percents[i] = this.value;
