@@ -22,6 +22,16 @@
 
 
 	<script>
+		var pieOptions = {
+			x: 150,
+			y: 150,
+			radius: 140,
+			sides: 6,
+
+			background: { color:'#F5F5F5', lineColor:'#000000', lineWidth:3 },
+			segments: { color:['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'], percent: [100, 100, 100, 100, 100, 100], lineWidth: 1, lineColor: '#000000' },
+			split: { color:'#F5F5F5', lineColor:'#000000', lineWidth:3 }
+		};
 	
 		var paper = Raphael(10, 50, 500, 500);
 		var segmentColors = ['#F2385A', '#F5A503', '#E9F1DF', '#56D9CD', '#3AA1BF', '#71F5EC'];
@@ -51,14 +61,18 @@
 			var secondPointX = Xcenter+size*Math.cos((i+1)*2*Math.PI/numberOfSides)*percent;
 			var secondPointY = Ycenter+size*Math.sin((i+1)*2*Math.PI/numberOfSides)*percent;
 
-			var segmentBackground = paper.path("M "+Xcenter+" "+Ycenter+", L "+firstHexX+" "+firstHexY+", L "+secondHexX+" "+secondHexY+" Z")
-			var segmentForeground = paper.path("M "+Xcenter+" "+Ycenter+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z").attr("fill", segmentColors[i]);
+			var segmentBackground = paper.path("M "+Xcenter+" "+Ycenter+", L "+firstHexX+" "+firstHexY+", L "+secondHexX+" "+secondHexY+" Z");
+			segmentBackground.attr({stroke: "#fff"});
+
+			var segmentForeground = paper.path("M "+Xcenter+" "+Ycenter+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z")
+			segmentForeground.attr({stroke: "#fff", fill:segmentColors[i], id: 'Hello'});
 
 			path += (i == 0 ? "M" : "L") + firstHexX + "," + firstHexY
 		}
 
 		path += "Z"
 		var background = paper.path(path).attr("fill", '#eee').toBack();
+		background.attr({stroke: "#fff"});
 	</script>
 
 </body>
