@@ -12,9 +12,23 @@
 
 
 	<script>
+		var pieOptions = {
+			x: 150,
+			y: 150,
+			radius: 140,
+			sides: 6,
+			percents: [100, 100, 100, 100, 100, 100],
+
+			lineWidth: 1,
+			lineColor: '#fff',										///TOP going right
+			segmentColors: ['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'],
+			backgroundColor: '#F5F5F5'
+		};
+
 		var canvas = document.getElementById("logo");
 		var ctx = canvas.getContext("2d");
 		var segmentColors = ['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'];
+		var percents = [60, 50, 90, 70, 60, 90];
 
 		var numberOfSides = 6,
 		    size = 150,
@@ -22,25 +36,45 @@
 		    Ycenter = 150;
 
 		
-		//ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));          
-		var percent = 0.2
+		//ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));       
 		
 		for (var i=0; i<=numberOfSides; i+=1) {
+
+			/* Draw Background Triangles */
 			ctx.beginPath();
+				ctx.moveTo (Xcenter, Ycenter); 
+				ctx.lineTo (Xcenter+size*Math.cos(i*2*Math.PI/numberOfSides), 
+		    				Ycenter+size*Math.sin(i*2*Math.PI/numberOfSides));
+				ctx.lineTo (Xcenter+size*Math.cos((i+1)*2*Math.PI/numberOfSides), 
+		    				Ycenter+size*Math.sin((i+1)*2*Math.PI/numberOfSides));
 
-			ctx.moveTo (Xcenter, Ycenter);      
-		    ctx.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides) * percent, Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides) * percent);
-		    ctx.lineTo (Xcenter + size * Math.cos((i+1) * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin((i+1) * 2 * Math.PI / numberOfSides));
-		    ctx.lineTo (Xcenter, Ycenter);
+				ctx.fillStyle = '#F5F5F5';
+			    ctx.fill();
+			    ctx.strokeStyle = "#CCCCCC";
+				ctx.lineWidth = 1;
+				ctx.stroke();
+			ctx.closePath();
 
-		    ctx.fillStyle = segmentColors[i-1];
-		    ctx.fill();
-		    ctx.strokeStyle = "#000000";
-			ctx.lineWidth = 1;
-			ctx.stroke();
+
+			/* Draw Foreground Triangles with percentages */
+			var percent = percents[i-1]/100;
+
+			ctx.beginPath();
+				ctx.moveTo (Xcenter, Ycenter);  
+
+			    ctx.lineTo (Xcenter+size*Math.cos(i*2*Math.PI/numberOfSides)*percent, 
+			    			Ycenter+size*Math.sin(i*2*Math.PI/numberOfSides)*percent);
+
+			    ctx.lineTo (Xcenter+size*Math.cos((i+1)*2*Math.PI/numberOfSides)*percent, 
+			    			Ycenter+size*Math.sin((i+1)*2*Math.PI/numberOfSides)* percent);
+
+			    ctx.lineTo (Xcenter, Ycenter);
+			    ctx.fillStyle = segmentColors[i-1];
+			    ctx.fill();
+			    ctx.strokeStyle = "#000000";
+				ctx.lineWidth = 1;
+				//ctx.stroke();
 		    ctx.closePath();
-
-		    console.log(segmentColors[i-1])
 		}
 
 	</script>
