@@ -78,9 +78,9 @@ function render () {
 
 	debug();
 
-	pieOptions.y = canvas.width/2 + Math.sin(time)*5;
+	pieOptions.y = canvas.width/2 + Math.sin(time)*6;
 
-	drawEllipse(ctx, canvas.width/2-pieOptions.radius/2-Math.sin(time)*5, canvas.height/2+pieOptions.radius+10, pieOptions.radius+Math.sin(time)*10, 8);
+	drawEllipse(ctx, canvas.width/2-pieOptions.radius/2-Math.sin(time)*6, canvas.height/2+pieOptions.radius+10, pieOptions.radius+Math.sin(time)*10, 8);
 }
 
 

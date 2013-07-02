@@ -64,6 +64,7 @@ var PolygonPie = function ( options ) {
 
 
 				var segmentForeground = context.path("M "+this.centerX+" "+this.centerY+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z");
+				//segmentForeground.mouseover(function() { segmentForeground.id })
 				segmentForeground.attr({
 										"stroke": this.segmentLineColor,
 										"stroke-width": this.segmentLineWidth,
@@ -77,7 +78,7 @@ var PolygonPie = function ( options ) {
 								"stroke-width": this.splitLineWidth 
 								});
 
-				segmentForeground.id = "path"+i;
+				segmentForeground.id = "segment"+i;
 
 				backgroundPath += (i == 0 ? "M" : "L") + firstHexX + "," + firstHexY
 			}
@@ -95,7 +96,7 @@ var PolygonPie = function ( options ) {
 
 	this.setPercent = function ( id, percent ) {
 		var percent = percent/100;
-		var path = context.getById("path"+id);
+		var path = context.getById("segment"+id);
 
 		var firstPointX = trigCos(id, this.centerX, this.size, this.sides, percent);
 		var firstPointY = trigSin(id, this.centerX, this.size, this.sides, percent);
