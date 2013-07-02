@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SVG</title>
+	<title>Polygon Pie SVG</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+	<style>
+		#lol {
+			fill: black;
+		}
+	</style>
 </head>
 <body>
-	
-	<div class="pie-debug">
-
-	</div>
-
 	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="pie-chart">
-					<!--  XY   XY      XY   -->
-					<!--  TL   TR      BM   -->
-		<!--<polygon points="0 0, 100 0, 50 100" transform="rotate(0 0 0)"/>-->
+
 	</svg>
 
 	<script src="js/min/raphael-min.js" type="text/javascript"></script>
 	<script src="js/polygon-pie-svg.js" type="text/javascript"></script>
-
 
 	<script>
 		var pieOptions = {
@@ -28,52 +26,19 @@
 			radius: 140,
 			sides: 6,
 
-			background: { color:'#F5F5F5', lineColor:'#000000', lineWidth:3 },
-			segments: { color:['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'], percent: [100, 100, 100, 100, 100, 100], lineWidth: 1, lineColor: '#000000' },
-			split: { color:'#F5F5F5', lineColor:'#000000', lineWidth:3 }
+			background: { color:'#F5F5F5', lineColor:'#FFF', lineWidth: 1 },
+			segments: { color:['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'], percent: [50, 80, 50, 100, 50, 80], lineWidth: 0, lineColor: '#000000' },
+			split: { lineColor:'#FFF', lineWidth: 1 }
 		};
-	
+
 		var paper = Raphael(10, 50, 500, 500);
-		var segmentColors = ['#F2385A', '#F5A503', '#E9F1DF', '#56D9CD', '#3AA1BF', '#71F5EC'];
-		var percents = [50, 20, 90, 40, 60, 100];
+		var pie = new PolygonPie(pieOptions);
+		pie.draw(paper);
 
-
-		var numberOfSides = 6,
-		    size = 120,
-		    Xcenter = 150,
-		    Ycenter = 150;     
-		
-		var path = "";
-
-		for (var i=0; i<=numberOfSides; i+=1) {
-
-			var percent = percents[i]/100;
-
-			var firstHexX = Xcenter+size*Math.cos(i*2*Math.PI/numberOfSides);
-			var firstHexY = Ycenter+size*Math.sin(i*2*Math.PI/numberOfSides);
-
-			var secondHexX = Xcenter+size*Math.cos(i*2*Math.PI/numberOfSides);
-			var secondHexY = Ycenter+size*Math.sin(i*2*Math.PI/numberOfSides);
-
-			var firstPointX = Xcenter+size*Math.cos(i*2*Math.PI/numberOfSides)*percent;
-			var firstPointY = Ycenter+size*Math.sin(i*2*Math.PI/numberOfSides)*percent;
-
-			var secondPointX = Xcenter+size*Math.cos((i+1)*2*Math.PI/numberOfSides)*percent;
-			var secondPointY = Ycenter+size*Math.sin((i+1)*2*Math.PI/numberOfSides)*percent;
-
-			var segmentBackground = paper.path("M "+Xcenter+" "+Ycenter+", L "+firstHexX+" "+firstHexY+", L "+secondHexX+" "+secondHexY+" Z");
-			segmentBackground.attr({stroke: "#fff"});
-
-			var segmentForeground = paper.path("M "+Xcenter+" "+Ycenter+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z")
-			segmentForeground.attr({stroke: "#fff", fill:segmentColors[i], id: 'Hello'});
-
-			path += (i == 0 ? "M" : "L") + firstHexX + "," + firstHexY
-		}
-
-		path += "Z"
-		var background = paper.path(path).attr("fill", '#eee').toBack();
-		background.attr({stroke: "#fff"});
+		pie.setPercent(0, 100);
 	</script>
+
+
 
 </body>
 </html>
