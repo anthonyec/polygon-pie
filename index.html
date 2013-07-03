@@ -3,11 +3,19 @@
 <head>
 	<title>Polygon Pie SVG + Canvas</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
+
+	<style>
+		#paper { 
+			left: 350px; 
+			position: absolute;
+		}
+	</style>
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 <body>
 
-	<canvas id="paper" width="300" height="300" style="left: 400px; position: absolute;">
+	<canvas id="paper" width="300" height="300">
 		get new browser now
 	</cavas>
 
@@ -15,6 +23,7 @@
 	<script src="js/polygon-pie-svg.js" type="text/javascript"></script>
 	<script src="js/polygon-pie-canvas.js" type="text/javascript"></script>
 	<script>
+
 		var pieOptions = {
 			x: 150,
 			y: 150,
@@ -29,7 +38,7 @@
 
 			segments: { 
 				color:['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'], 
-				percent: [50, 80, 50, 100, 50, 80], 
+				percent: [50, 40, 75, 100, 50, 80], 
 				lineWidth: 0, 
 				lineColor: '#000000' 
 			},
@@ -50,8 +59,11 @@
 		pieCANVAS.draw(ctx);
 
 
-		pieSVG.setPercent(1, 100);
-		pieCANVAS.setPercent(1, 100);
+		var segmentID = 0;
+		var segmentPercent = 100;
+
+		pieSVG.setPercent(segmentID, segmentPercent);
+		pieCANVAS.setPercent(segmentID, segmentPercent);
 
 	</script>
 

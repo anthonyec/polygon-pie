@@ -29,11 +29,11 @@ var PolygonPieSvg = function ( options ) {
 
 	this.draw = function ( ctx ) {
 		context = ctx;
-		this.centerX = optionObject.x;
-		this.centerY = optionObject.y;
+		this.x = optionObject.x;
+		this.y = optionObject.y;
 		this.size = optionObject.radius;
 		this.sides = optionObject.sides;
-		this.percents = optionObject.segments.percent;
+		this.percent = optionObject.segments.percent;
 
 		this.segmentColors = optionObject.segments.color;
 		this.segmentLineColor = optionObject.segments.lineColor;
@@ -48,18 +48,18 @@ var PolygonPieSvg = function ( options ) {
 
 		for (var i=0; i<=this.sides; i+=1) {
 			if (i != this.sides) {
-				var percent = this.percents[i]/100;
+				var percent = this.percent[i]/100;
 
-				var firstHexX = trigCos(i, this.centerX, this.size, this.sides, 1);
-				var firstHexY = trigSin(i, this.centerY, this.size, this.sides, 1);
+				var firstHexX = trigCos(i, this.x, this.size, this.sides, 1);
+				var firstHexY = trigSin(i, this.y, this.size, this.sides, 1);
 
-				var firstPointX = this.centerX+this.size*Math.cos(i*2*Math.PI/this.sides)*percent;
-				var firstPointY = this.centerY+this.size*Math.sin(i*2*Math.PI/this.sides)*percent;
+				var firstPointX = this.x+this.size*Math.cos(i*2*Math.PI/this.sides)*percent;
+				var firstPointY = this.y+this.size*Math.sin(i*2*Math.PI/this.sides)*percent;
 
-				var secondPointX = this.centerX+this.size*Math.cos((i+1)*2*Math.PI/this.sides)*percent;
-				var secondPointY = this.centerY+this.size*Math.sin((i+1)*2*Math.PI/this.sides)*percent;
+				var secondPointX = this.x+this.size*Math.cos((i+1)*2*Math.PI/this.sides)*percent;
+				var secondPointY = this.y+this.size*Math.sin((i+1)*2*Math.PI/this.sides)*percent;
 
-				var segmentForeground = context.path("M "+this.centerX+" "+this.centerY+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z");
+				var segmentForeground = context.path("M "+this.x+" "+this.y+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z");
 
 				segmentForeground.attr({
 										"stroke": this.segmentLineColor,
@@ -68,7 +68,7 @@ var PolygonPieSvg = function ( options ) {
 										});
 
 
-				var splitLines = context.path("M "+this.centerX+" "+this.centerY+", L "+firstHexX+" "+firstHexY+", L "+firstHexX+" "+firstHexY+" Z").toFront();
+				var splitLines = context.path("M "+this.x+" "+this.y+", L "+firstHexX+" "+firstHexY+", L "+firstHexX+" "+firstHexY+" Z").toFront();
 				splitLines.attr({
 								"stroke": this.splitLineColor, 
 								"stroke-width": this.splitLineWidth 
@@ -94,11 +94,11 @@ var PolygonPieSvg = function ( options ) {
 		var percent = percent/100;
 		var path = context.getById("segment"+id);
 
-		var firstPointX = trigCos(id, this.centerX, this.size, this.sides, percent);
-		var firstPointY = trigSin(id, this.centerX, this.size, this.sides, percent);
+		var firstPointX = trigCos(id, this.x, this.size, this.sides, percent);
+		var firstPointY = trigSin(id, this.x, this.size, this.sides, percent);
 
-		var secondPointX = trigCos(id+1, this.centerX, this.size, this.sides, percent);
-		var secondPointY = trigSin(id+1, this.centerX, this.size, this.sides, percent);
+		var secondPointX = trigCos(id+1, this.x, this.size, this.sides, percent);
+		var secondPointY = trigSin(id+1, this.x, this.size, this.sides, percent);
 
 		path.attr({ "path": "M"+optionObject.x+" "+optionObject.y+", L"+firstPointX+" "+firstPointY+", L"+secondPointX+" "+secondPointY+" Z" });
 	}

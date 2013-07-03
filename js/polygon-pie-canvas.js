@@ -29,11 +29,11 @@ var PolygonPieCanvas = function ( options ) {
 
 	this.draw = function ( ctx ) {
 		context = ctx;
-		this.centerX = optionObject.x;
-		this.centerY = optionObject.y;
+		this.x = optionObject.x;
+		this.y = optionObject.y;
 		this.size = optionObject.radius;
 		this.sides = optionObject.sides;
-		this.percents = optionObject.segments.percent;
+		this.percent = optionObject.segments.percent;
 
 		this.segmentColors = optionObject.segments.color;
 		this.segmentLineColor = optionObject.segments.lineColor;
@@ -50,11 +50,11 @@ var PolygonPieCanvas = function ( options ) {
 
 			/* Draw Background Triangles */
 			ctx.beginPath();
-				ctx.moveTo (this.centerX, this.centerY); 
-				ctx.lineTo (this.centerX+this.size*Math.cos(i*2*Math.PI/this.sides), 
-		    				this.centerY+this.size*Math.sin(i*2*Math.PI/this.sides));
-				ctx.lineTo (this.centerX+this.size*Math.cos((i-1)*2*Math.PI/this.sides), 
-		    				this.centerY+this.size*Math.sin((i-1)*2*Math.PI/this.sides));
+				ctx.moveTo (this.x, this.y); 
+				ctx.lineTo (this.x+this.size*Math.cos(i*2*Math.PI/this.sides), 
+		    				this.y+this.size*Math.sin(i*2*Math.PI/this.sides));
+				ctx.lineTo (this.x+this.size*Math.cos((i-1)*2*Math.PI/this.sides), 
+		    				this.y+this.size*Math.sin((i-1)*2*Math.PI/this.sides));
 
 				ctx.fillStyle = this.backgroundColor;
 			    ctx.fill();
@@ -69,18 +69,18 @@ var PolygonPieCanvas = function ( options ) {
 
 			/* Draw Foreground Triangles with percentages */ 
 			/* For drawing to the preview line I use i-1 instead of i+1 otherwise it comes out rotated a bit compared to the svg one */
-			var percent = this.percents[i-1]/100;
+			var percent = this.percent[i-1]/100;
 
 			ctx.beginPath();
-				ctx.moveTo (this.centerX, this.centerY);  
+				ctx.moveTo (this.x, this.y);  
 
-			    ctx.lineTo (this.centerX+this.size*Math.cos(i*2*Math.PI/this.sides)*percent, 
-			    			this.centerY+this.size*Math.sin(i*2*Math.PI/this.sides)*percent);
+			    ctx.lineTo (this.x+this.size*Math.cos(i*2*Math.PI/this.sides)*percent, 
+			    			this.y+this.size*Math.sin(i*2*Math.PI/this.sides)*percent);
 
-			    ctx.lineTo (this.centerX+this.size*Math.cos((i-1)*2*Math.PI/this.sides)*percent, 
-			    			this.centerY+this.size*Math.sin((i-1)*2*Math.PI/this.sides)* percent);
+			    ctx.lineTo (this.x+this.size*Math.cos((i-1)*2*Math.PI/this.sides)*percent, 
+			    			this.y+this.size*Math.sin((i-1)*2*Math.PI/this.sides)* percent);
 
-			    ctx.lineTo (this.centerX, this.centerY);
+			    ctx.lineTo (this.x, this.y);
 			    ctx.fillStyle = this.segmentColors[i-1];
 			    ctx.fill();
 			    ctx.strokeStyle = this.segmentLineColor;
@@ -95,12 +95,12 @@ var PolygonPieCanvas = function ( options ) {
 		 /* Draw split */
 		for (var i=0; i<=this.sides; i+=1) {
 			ctx.beginPath();
-				ctx.moveTo (this.centerX, this.centerY); 
-				ctx.lineTo (this.centerX+this.size*Math.cos(i*2*Math.PI/this.sides), 
-		    				this.centerY+this.size*Math.sin(i*2*Math.PI/this.sides));
+				ctx.moveTo (this.x, this.y); 
+				ctx.lineTo (this.x+this.size*Math.cos(i*2*Math.PI/this.sides), 
+		    				this.y+this.size*Math.sin(i*2*Math.PI/this.sides));
 
-				// ctx.lineTo (this.centerX+this.size*Math.cos((i-1)*2*Math.PI/this.sides), 
-		  //   				this.centerY+this.size*Math.sin((i-1)*2*Math.PI/this.sides));
+				// ctx.lineTo (this.x+this.size*Math.cos((i-1)*2*Math.PI/this.sides), 
+		  //   				this.y+this.size*Math.sin((i-1)*2*Math.PI/this.sides));
 
 			    ctx.strokeStyle = this.splitLineColor;
 				ctx.lineWidth = this.splitLineWidth;
