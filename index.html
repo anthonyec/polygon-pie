@@ -53,8 +53,8 @@
 		var pieSVG = new PolygonPieSvg(pieOptions);
 		pieSVG.draw(paper);
 
-		var canvas = document.getElementById("paper");
-		var ctx = canvas.getContext("2d");
+		var canvas = document.getElementById('paper');
+		var ctx = canvas.getContext('2d');
 		var pieCANVAS = new PolygonPieCanvas(pieOptions);
 		pieCANVAS.draw(ctx);
 
@@ -64,6 +64,20 @@
 
 		pieSVG.setPercent(segmentID, segmentPercent);
 		pieCANVAS.setPercent(segmentID, segmentPercent);
+
+
+		/* Possibly a better way to store the data that Ill add one day */
+		var data = [
+			{
+				value: 50,
+				color: '#EA8541'
+			},
+
+			{
+				value: 90,
+				color: '#9BC858'
+			}
+		]
 
 	</script>
 

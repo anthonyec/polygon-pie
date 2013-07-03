@@ -25,7 +25,7 @@ var PolygonPieSvg = function ( options ) {
 	}
 
 	var context;
-	var backgroundPath = "";
+	var backgroundPath = '';
 
 	this.draw = function ( ctx ) {
 		context = ctx;
@@ -59,40 +59,40 @@ var PolygonPieSvg = function ( options ) {
 				var secondPointX = this.x+this.size*Math.cos((i+1)*2*Math.PI/this.sides)*percent;
 				var secondPointY = this.y+this.size*Math.sin((i+1)*2*Math.PI/this.sides)*percent;
 
-				var segmentForeground = context.path("M "+this.x+" "+this.y+", L "+firstPointX+" "+firstPointY+", L "+secondPointX+" "+secondPointY+" Z");
+				var segmentForeground = context.path('M '+this.x+' '+this.y+', L '+firstPointX+' '+firstPointY+', L '+secondPointX+' '+secondPointY+' Z');
 
 				segmentForeground.attr({
-										"stroke": this.segmentLineColor,
-										"stroke-width": this.segmentLineWidth,
+										'stroke': this.segmentLineColor,
+										'stroke-width': this.segmentLineWidth,
 										fill: this.segmentColors[i]
 										});
 
 
-				var splitLines = context.path("M "+this.x+" "+this.y+", L "+firstHexX+" "+firstHexY+", L "+firstHexX+" "+firstHexY+" Z").toFront();
+				var splitLines = context.path('M '+this.x+' '+this.y+', L '+firstHexX+' '+firstHexY+', L '+firstHexX+' '+firstHexY+' Z').toFront();
 				splitLines.attr({
-								"stroke": this.splitLineColor, 
-								"stroke-width": this.splitLineWidth 
+								'stroke': this.splitLineColor, 
+								'stroke-width': this.splitLineWidth 
 								});
 
-				segmentForeground.id = "segment"+i;
+				segmentForeground.id = 'segment'+i;
 
-				backgroundPath += (i == 0 ? "M" : "L") + firstHexX + "," + firstHexY
+				backgroundPath += (i == 0 ? 'M' : 'L') + firstHexX + ',' + firstHexY
 			}
 		}
 
-		backgroundPath += "Z";
+		backgroundPath += 'Z';
 
 		var background = context.path(backgroundPath).toBack();
 		background.attr({
 						stroke: this.backgroundLineColor,
-						"stroke-width": this.backgroundLineWidth,
-						"fill": this.backgroundColor
+						'stroke-width': this.backgroundLineWidth,
+						'fill': this.backgroundColor
 						})
 	}
 
 	this.setPercent = function ( id, percent ) {
 		var percent = percent/100;
-		var path = context.getById("segment"+id);
+		var path = context.getById('segment'+id);
 
 		var firstPointX = trigCos(id, this.x, this.size, this.sides, percent);
 		var firstPointY = trigSin(id, this.x, this.size, this.sides, percent);
@@ -100,6 +100,6 @@ var PolygonPieSvg = function ( options ) {
 		var secondPointX = trigCos(id+1, this.x, this.size, this.sides, percent);
 		var secondPointY = trigSin(id+1, this.x, this.size, this.sides, percent);
 
-		path.attr({ "path": "M"+optionObject.x+" "+optionObject.y+", L"+firstPointX+" "+firstPointY+", L"+secondPointX+" "+secondPointY+" Z" });
+		path.attr({ 'path': 'M'+optionObject.x+' '+optionObject.y+', L'+firstPointX+' '+firstPointY+', L'+secondPointX+' '+secondPointY+' Z' });
 	}
 }

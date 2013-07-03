@@ -25,7 +25,7 @@ var PolygonPieCanvas = function ( options ) {
 	}
 
 	var context;
-	var backgroundPath = "";
+	var backgroundPath = '';
 
 	this.draw = function ( ctx ) {
 		context = ctx;
