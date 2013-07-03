@@ -1,4 +1,4 @@
-var PolygonPie = function ( options ) {
+var PolygonPieSvg = function ( options ) {
 	var defaultOptions = {
 		x: 150,
 		y: 150,

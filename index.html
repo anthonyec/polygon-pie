@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Polygon Pie Canvas</title>
+	<title>Polygon Pie SVG + Canvas</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 <body>
 
-	<div class="content" >
-		<canvas id="paper" width="400" height="400">
-			get new browser now
-		</cavas>
-	</div>
+	<canvas id="paper" width="300" height="300" style="left: 400px; position: absolute;">
+		get new browser now
+	</cavas>
 
+	<script src="js/min/raphael-min.js" type="text/javascript"></script>
+	<script src="js/polygon-pie-svg.js" type="text/javascript"></script>
 	<script src="js/polygon-pie-canvas.js" type="text/javascript"></script>
-
 	<script>
 		var pieOptions = {
 			x: 150,
@@ -25,7 +24,7 @@
 			background: { 
 				color:'#F5F5F5', 
 				lineColor:'#000', 
-				lineWidth: 2
+				lineWidth: 0
 			},
 
 			segments: { 
@@ -37,15 +36,19 @@
 
 			split: { 
 				lineColor:'#000', 
-				lineWidth: 1 
+				lineWidth: 0
 			}
 		};
 
+		var paper = Raphael(0, 0, 300, 300);
+		var pieSVG = new PolygonPieSvg(pieOptions);
+		pieSVG.draw(paper);
+
 		var canvas = document.getElementById("paper");
 		var ctx = canvas.getContext("2d");
-		var pie = new PolygonPieCanvas(pieOptions);
-		pie.draw(ctx);
-		//pie.setPercent(0, 100);
+		var pieCANVAS = new PolygonPieCanvas(pieOptions);
+		pieCANVAS.draw(ctx);
+
 	</script>
 
 </body>

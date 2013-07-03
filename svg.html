@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Polygon Pie SVG</title>
-	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 <body>
@@ -22,8 +22,8 @@
 
 			background: { 
 				color:'#F5F5F5', 
-				lineColor:'#FFF', 
-				lineWidth: 1 
+				lineColor:'#000', 
+				lineWidth: 2
 			},
 
 			segments: { 
@@ -34,13 +34,13 @@
 			},
 
 			split: { 
-				lineColor:'#FFF', 
-				lineWidth: 0 
+				lineColor:'#000', 
+				lineWidth: 1 
 			}
 		};
 
 		var paper = Raphael(0, 0, 300, 300);
-		var pie = new PolygonPie(pieOptions);
+		var pie = new PolygonPieSvg(pieOptions);
 		pie.draw(paper);
 		//pie.setPercent(0, 100);
 
