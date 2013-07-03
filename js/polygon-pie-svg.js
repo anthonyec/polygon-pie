@@ -25,6 +25,7 @@ var PolygonPie = function ( options ) {
 	}
 
 	var context;
+	var group = paper.set();
 	var backgroundPath = "";
 
 	this.draw = function ( ctx ) {
@@ -51,10 +52,7 @@ var PolygonPie = function ( options ) {
 				var percent = this.percents[i]/100;
 
 				var firstHexX = trigCos(i, this.centerX, this.size, this.sides, 1);
-				var firstHexY = trigSin(i, this.centerX, this.size, this.sides, 1);
-
-				var secondHexX = this.centerX+this.size*Math.cos(i*2*Math.PI/this.sides);
-				var secondHexY = this.centerY+this.size*Math.sin(i*2*Math.PI/this.sides);
+				var firstHexY = trigSin(i, this.centerY, this.size, this.sides, 1);
 
 				var firstPointX = this.centerX+this.size*Math.cos(i*2*Math.PI/this.sides)*percent;
 				var firstPointY = this.centerY+this.size*Math.sin(i*2*Math.PI/this.sides)*percent;
@@ -72,7 +70,7 @@ var PolygonPie = function ( options ) {
 										});
 
 
-				var splitLines = context.path("M "+this.centerX+" "+this.centerY+", L "+firstHexX+" "+firstHexY+", L "+secondHexX+" "+secondHexY+" Z").toFront();
+				var splitLines = context.path("M "+this.centerX+" "+this.centerY+", L "+firstHexX+" "+firstHexY+", L "+firstHexX+" "+firstHexY+" Z").toFront();
 				splitLines.attr({
 								"stroke": this.splitLineColor, 
 								"stroke-width": this.splitLineWidth 
