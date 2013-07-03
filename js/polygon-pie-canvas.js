@@ -114,7 +114,7 @@ var PolygonPieCanvas = function ( options ) {
 
 	this.setPercent = function ( id, percent ) {
 		optionObject.segments.percent[id] = percent;
-		context.clearRect(optionObject.x, optionObject.y, optionObject.radius, optionObject.radius);
-		draw(context);
+		context.clearRect(optionObject.x-optionObject.radius, optionObject.y-optionObject.radius, optionObject.radius*2, optionObject.radius*2);
+		this.draw(context);
 	}
 }
