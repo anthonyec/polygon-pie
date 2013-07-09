@@ -24,6 +24,31 @@
 	<script src="js/polygon-pie-canvas.js" type="text/javascript"></script>
 	<script>
 
+		// var pieOptions = {
+		// 	x: 150,
+		// 	y: 150,
+		// 	radius: 140,
+		// 	sides: 6,
+
+		// 	background: { 
+		// 		color:'#F5F5F5', 
+		// 		lineColor:'#000', 
+		// 		lineWidth: 0
+		// 	},
+
+		// 	segments: { 
+		// 		color:['#EA8541', '#F5BB1C', '#9BC858', '#8DCEEC', '#6C3283', '#DD131D'], 
+		// 		percent: [50, 40, 75, 100, 50, 80], 
+		// 		lineWidth: 0, 
+		// 		lineColor: '#000000' 
+		// 	},
+
+		// 	split: { 
+		// 		lineColor:'#000', 
+		// 		lineWidth: 0
+		// 	}
+		// };
+
 		var pieOptions = {
 			x: 150,
 			y: 150,
@@ -46,7 +71,12 @@
 			split: { 
 				lineColor:'#000', 
 				lineWidth: 0
-			}
+			},
+
+			data: [
+				{ value: 50, color: '#EA8541' },
+				{ value: 90, color: '#9BC858' }
+			]
 		};
 
 		var paper = Raphael(0, 0, 300, 300);
@@ -66,18 +96,7 @@
 		pieCANVAS.setPercent(segmentID, segmentPercent);
 
 
-		/* Possibly a better way to store the data that Ill add one day */
-		var data = [
-			{
-				value: 50,
-				color: '#EA8541'
-			},
-
-			{
-				value: 90,
-				color: '#9BC858'
-			}
-		]
+		console.log(pieOptions.data[0].value);
 
 	</script>
 
